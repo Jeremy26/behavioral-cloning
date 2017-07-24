@@ -13,7 +13,7 @@ The goals / steps of this project are the following:
 [image2]: ./examples/mse_loss.png "MSE Loss"
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Files Submitted & Code Quality
@@ -36,29 +36,6 @@ python drive.py model.h5
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-### Model Architecture and Training Strategy
-
-#### 1. An appropriate model architecture has been employed
-
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
-
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
-
-#### 2. Attempts to reduce overfitting in the model
-
-The model contains dropout layers in order to reduce overfitting (model.py lines 21). 
-
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
-
-#### 3. Model parameter tuning
-
-The model used an adam optimizer, but I did turn manually the learning rate to 0.0001.
-
-#### 4. Appropriate training data
-
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ... 
-
-For details about how I created the training data, see the next section. 
 
 ### Model Architecture and Training Strategy
 
@@ -103,11 +80,11 @@ I did add a dropout after Layer 2 because experimenting a 0.5 Dropout gave me a 
 I did split my data into training and validation. The test data is the autonomous mode in the simulator.
 
 In order to get good data, I did the following :
-** A. Data collection **
-** B. Use of three cameras with a correction **
-** C. Data augmentation with flipping **
-** D. Data augmentation with augment_brightness function **
-** E. Data augmentation with random shadows**
+* A. Data collection
+* B. Use of three cameras with a correction 
+* C. Data augmentation with flipping 
+* D. Data augmentation with augment_brightness function
+* E. Data augmentation with random shadows
 
 ##### A. Data Collection
 I did a first collect of the training Data by driving on the center for 3 laps. I then added data by driving one lap counter-clockwise and one by driving on the border of the road. I did few records of driving on the curves also to help the model learning on how to take a curve.
@@ -175,6 +152,5 @@ I could notice I did use a generator so i don't have to load the data and store 
 #### 4. Video
 Finally, here is the video corresponding to my training.
 https://github.com/Jeremy26/behavioral-cloning/blob/master/run1.mp4
-![video here] (https://github.com/Jeremy26/behavioral-cloning/blob/master/run1.mp4)
 
 Thank you for reading.
