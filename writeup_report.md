@@ -1,4 +1,4 @@
-#**Behavioral Cloning** 
+# **Welcome to Behavioral Cloning** 
 
 The goals / steps of this project are the following:
 * Use the simulator to collect data of good driving behavior
@@ -12,13 +12,10 @@ The goals / steps of this project are the following:
 [image1]: ./examples/random_shadows.png "Random Shadows"
 [image2]: ./examples/mse_loss.png "MSE Loss"
 
-## Rubric Points
-### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
+#### Rubric Points
+Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
----
-### Files Submitted & Code Quality
-
-#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
+##### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
 * model.py containing the script to create and train the model
@@ -26,56 +23,17 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md or writeup_report.pdf summarizing the results
 
-#### 2. Submission includes functional code
+##### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
 python drive.py model.h5
 ```
 
-#### 3. Submission code is usable and readable
+##### 3. Submission code is usable and readable
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-
-### Model Architecture and Training Strategy
-
-#### 1. Solution Design Approach
-
-The overall strategy for deriving a model architecture was to ...
-
-My first step was to use a convolution neural network model similar to the Nvidia Team. This model is not really complex and is the model used by the Nvidia Team of a real self-driving car so I thought it would be good. I however had questions regarding this model. Why this number of layers ? What makes this model better than the same model with one more/less convolution ?
-
-#### 2. Final Model Architecture
-
-| Layer         		|     Description	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Input         		| 320x160x3 image   							| 
-| LAYER 1         		|   							| 
-| Convolution 5x5     	| 2x2 stride - 	|
-| ELU					|			Activation function									|
-| LAYER 2         		|    							| 
-| Convolution 5x5     	| 2x2 stride - 	|
-| ELU					|				Activation function								|
-|	DROPOUT				|	0.5 |
-| LAYER 3        		|    							| 
-| Convolution 5x5     	| 2x2 stride - 	|
-| ELU				|        									|
-| LAYER 4						|												|
-| Convolution 5x5     	| - 	|
-|	ELU					|		Activation function										|
-| LAYER 5						|												|
-| Convolution 5x5     	| - 	|
-|	ELU					|		Activation function										|
-| LAYER 6						|												|
-|	Flatten					|			-								|
-|	Dense					|			100								|
-|	Dense					|			50 |
-|	Dense					|			10								|
-|	Dense					|			1								|
-
-I did add a dropout after Layer 2 because experimenting a 0.5 Dropout gave me a lower loss. It could help with early overfitting and helped my model generalize a little bit.
-
-#### 3. Creation of the Training Set
+### 1. Data Collect
 
 I did split my data into training and validation. The test data is the autonomous mode in the simulator.
 
@@ -133,7 +91,43 @@ We can see that the image now has a shadow covering the screen. The point of thi
 
 At the end of data augmentation, I have a sample of 192 816 images for training and 48 216 for validation, so 167 040 total data, from 10 043 data initially.
 
-#### 4. Training process
+### 2. Model Architecture
+
+##### Solution Design Approach
+
+My first step was to use a convolution neural network model similar to the Nvidia Team. This model is not really complex and is the model used by the Nvidia Team of a real self-driving car so I thought it would be good. I however had questions regarding this model. Why this number of layers ? What makes this model better than the same model with one more/less convolution ?
+
+##### Final Model Architecture
+
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 320x160x3 image   							| 
+| LAYER 1         		|   							| 
+| Convolution 5x5     	| 2x2 stride - 	|
+| ELU					|			Activation function									|
+| LAYER 2         		|    							| 
+| Convolution 5x5     	| 2x2 stride - 	|
+| ELU					|				Activation function								|
+|	DROPOUT				|	0.5 |
+| LAYER 3        		|    							| 
+| Convolution 5x5     	| 2x2 stride - 	|
+| ELU				|        									|
+| LAYER 4						|												|
+| Convolution 5x5     	| - 	|
+|	ELU					|		Activation function										|
+| LAYER 5						|												|
+| Convolution 5x5     	| - 	|
+|	ELU					|		Activation function										|
+| LAYER 6						|												|
+|	Flatten					|			-								|
+|	Dense					|			100								|
+|	Dense					|			50 |
+|	Dense					|			10								|
+|	Dense					|			1								|
+
+I did add a dropout after Layer 2 because experimenting a 0.5 Dropout gave me a lower loss. It could help with early overfitting and helped my model generalize a little bit.
+
+### 3. Training
 My process for training is quite simple.
 I use an adam optimizer and I tune the learning rate to 0.0001. I then train on three epochs so it doesn't take too long.
 ```
@@ -149,7 +143,7 @@ I could notice I did use a generator so i don't have to load the data and store 
 
 ![alt text][image2]
 
-#### 4. Video
+### 4. Video
 Finally, here is the video corresponding to my training.
 https://github.com/Jeremy26/behavioral-cloning/blob/master/run1.mp4
 
