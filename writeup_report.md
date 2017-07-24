@@ -11,6 +11,8 @@ The goals / steps of this project are the following:
 
 [image1]: ./examples/random_shadows.png "Random Shadows"
 [image2]: ./examples/mse_loss.png "MSE Loss"
+[image3]: ./examples/architecture.png "Architecture"
+
 
 #### Rubric Points
 Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -98,32 +100,7 @@ At the end of data augmentation, I have a sample of 192 816 images for training 
 My first step was to use a convolution neural network model similar to the Nvidia Team. This model is not really complex and is the model used by the Nvidia Team of a real self-driving car so I thought it would be good. I however had questions regarding this model. Why this number of layers ? What makes this model better than the same model with one more/less convolution ?
 
 ##### Final Model Architecture
-
-| Layer         		|     Description	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Input         		| 320x160x3 image   							| 
-| LAYER 1         		|   							| 
-| Convolution 5x5     	| 2x2 stride - 	|
-| ELU					|			Activation function									|
-| LAYER 2         		|    							| 
-| Convolution 5x5     	| 2x2 stride - 	|
-| ELU					|				Activation function								|
-|	DROPOUT				|	0.5 |
-| LAYER 3        		|    							| 
-| Convolution 5x5     	| 2x2 stride - 	|
-| ELU				|        									|
-| LAYER 4						|												|
-| Convolution 5x5     	| - 	|
-|	ELU					|		Activation function										|
-| LAYER 5						|												|
-| Convolution 5x5     	| - 	|
-|	ELU					|		Activation function										|
-| LAYER 6						|												|
-|	Flatten					|			-								|
-|	Dense					|			100								|
-|	Dense					|			50 |
-|	Dense					|			10								|
-|	Dense					|			1								|
+![alt text][image3]
 
 I did add a dropout after Layer 2 because experimenting a 0.5 Dropout gave me a lower loss. It could help with early overfitting and helped my model generalize a little bit.
 
